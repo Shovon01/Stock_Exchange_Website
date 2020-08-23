@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Shovon Stock Exchange</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="top-header">
+        <div id="clock">
+          <p id="time"></p>
+        </div>
+
+        <div id="register">
+          <a href="#" class="sign-up">New user? register here</a>
+          <a href="#" class="sign-in"><i class="fas fa-lock"></i> Login</a>
+        </div>
+      </div>
+      <div class="container header">
+        <div class="row">
+          <div class="col-md-6">
+            <a href="#" class="logo"
+              ><img
+                src="./img/logo.png"
+                alt=""
+                width="150px"
+                height="120px"
+              /><span style="font-size: 24px;">Shovon</span> Stock Exchange(2016)</a
+            >
+          </div>
+          <div class="col-md-6">
+            <div class="input-group mb-3 pt-5">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Search for quotes, news, documents"
+                aria-label="Recipient's username"
+                aria-describedby="button-addon2"
+              />
+              <div class="input-group-append">
+                <button
+                  class="btn btn-outline-secondary"
+                  type="button"
+                  id="button-addon2"
+                >
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Navbar -->
+      <div class="container nav">
+        <nav>
+          <a href="#">Home</a>
+          <a href="#">Prices & Markets</a>
+          <a href="#">Statistics</a>
+          <a href="#">Membership</a>
+          <a href="#">Trade Services</a>
+          <a href="#">Markets Regulation</a>
+          <a href="#">Contact Us</a>
+        </nav>
+      </div>
+
+      <!-- Slider -->
+      <div class="container slider">
+        <div
+          id="carouselExampleIndicators"
+          class="carousel slide"
+          data-ride="carousel"
+        >
+          <ol class="carousel-indicators">
+            <li
+              data-target="#carouselExampleIndicators"
+              data-slide-to="0"
+              class="active"
+            ></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="./img/image1.webp" class="d-block w-100" alt="..." />
+            </div>
+            <div class="carousel-item">
+              <img src="./img/image2.jpg" class="d-block w-100" alt="..." />
+            </div>
+            <div class="carousel-item">
+              <img src="./img/image3.webp" class="d-block w-100" alt="..." />
+            </div>
+          </div>
+          <a
+            class="carousel-control-prev"
+            href="#carouselExampleIndicators"
+            role="button"
+            data-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a
+            class="carousel-control-next"
+            href="#carouselExampleIndicators"
+            role="button"
+            data-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="container" style="background-color: #fff;">
+        <div class="row">
+          <div class="col-md-12">
+            <input
+              id="myInput"
+              onkeyup="myFunction();"
+              class="form-control mr-sm-2 mt-2 mb-2"
+              type="search"
+              placeholder="Search Table"
+              aria-label="Search"
+            />
+            <table id="myTable" class="table">
+              <tr class="thead-dark">
+                <th style="width:60%;">Company Name</th>
+                <th style="width:20%;">Price</th>
+                <th style="width:20%;">Change</th>
+              </tr>
+              <tr>
+                <td>Ace</td>
+                <td>45</td>
+                <td>4.5</td>
+              </tr>
+              <tr>
+                <td>Bata</td>
+                <td>547</td>
+                <td>5.0</td>
+              </tr>
+              <tr>
+                <td>Square</td>
+                <td>9846</td>
+                <td>.10</td>
+              </tr>
+              <tr>
+                <td>Fresh</td>
+                <td>237</td>
+                <td>10.00</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- Middle Content -->
+      <div class="container middle">
+        <div class="row">
+          <div class="col-md-6 pt-5">
+            <canvas id="lineChart"></canvas>
+          </div>
+          <div class="col-md-6 pt-2">
+            <h2>Sorting Table</h2>
+            <table class="table table-striped">
+              <thead>
+                <tr class="top-stock">
+                  <th colspan="4">TOP STOCK</th>
+                </tr>
+                <tr>
+                  <th onclick="sort_table(people, 0, asc1); asc1 *= -1;">
+                    Code or Company's Name
+                  </th>
+                  <th
+                    onclick="
+                    sort_table(people,
+                    1,
+                    asc2);
+                    asc2
+                    *=-1;"
+                  >
+                    Value <span>(Rp)</span>
+                  </th>
+                  <th onclick="sort_table(people, 2, asc3); asc3 *= -1;">
+                    Volumne <span>(Shares)</span>
+                  </th>
+                  <th onclick="sort_table(people, 0, asc1); asc1 *= -1;">
+                    Price (%)
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="people">
+                <tr>
+                  <td>TLKM</td>
+                  <td>367,594,243,000</td>
+                  <td>83,823,900</td>
+                  <td>4,380</td>
+                </tr>
+                <tr>
+                  <td>BBRI</td>
+                  <td>342,491,927,900</td>
+                  <td>4,460,422,500</td>
+                  <td>4,080</td>
+                </tr>
+                <tr>
+                  <td>ASII</td>
+                  <td>236,855,154,000</td>
+                  <td>58,236,900</td>
+                  <td>1,510</td>
+                </tr>
+                <tr>
+                  <td>BBCA</td>
+                  <td>229,494,175,000</td>
+                  <td>35,340,800</td>
+                  <td>1,085</td>
+                </tr>
+                <tr>
+                  <td>PKML</td>
+                  <td>429,494,175,000</td>
+                  <td>36,340,800</td>
+                  <td>1,585</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="4"><a href="#">More</a></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- Tables -->
+      <div class="container tables pt-2">
+        <div class="row">
+          <div class="col-md-4">
+            <table class="table table-striped p-1">
+              <thead>
+                <tr class="top-stock">
+                  <th colspan="4">TOP GAINERS</th>
+                </tr>
+                <tr>
+                  <th>Stock</th>
+                  <th>Price</th>
+                  <th>Change</th>
+                  <th>(%)</th>
+                </tr>
+              </thead>
+              <tbody class="top-gainer-table">
+                <tr>
+                  <td>SEMB.X0000</td>
+                  <td>O.30</td>
+                  <td>0.10</td>
+                  <td><i class="fas fa-sort-up"></i> 50.00</td>
+                </tr>
+                <tr>
+                  <td>MEL.N0000</td>
+                  <td>0.54</td>
+                  <td>0.30</td>
+                  <td><i class="fas fa-sort-up"></i> 9.09</td>
+                </tr>
+                <tr>
+                  <td>LLMP.N0000</td>
+                  <td>1.50</td>
+                  <td>0.10</td>
+                  <td><i class="fas fa-sort-up"></i> 7.14</td>
+                </tr>
+                <tr>
+                  <td>SHOT.N0000</td>
+                  <td>2.40</td>
+                  <td>0.56</td>
+                  <td><i class="fas fa-sort-up"></i> 5.65</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-4">
+            <table class="table table-striped p-1">
+              <thead>
+                <tr class="top-stock">
+                  <th colspan="4">TOP LOSERS</th>
+                </tr>
+                <tr>
+                  <th>Stock</th>
+                  <th>Price</th>
+                  <th>Change</th>
+                  <th>(%)</th>
+                </tr>
+              </thead>
+              <tbody class="top-losers-table">
+                <tr>
+                  <td>TESS.X0000</td>
+                  <td>0.40</td>
+                  <td>-0.10</td>
+                  <td><i class="fas fa-caret-down"></i> -20.00</td>
+                </tr>
+                <tr>
+                  <td>AESM.N0000</td>
+                  <td>0.50</td>
+                  <td>-0.20</td>
+                  <td><i class="fas fa-caret-down"></i> -30.00</td>
+                </tr>
+                <tr>
+                  <td>LMFE.N0000</td>
+                  <td>0.60</td>
+                  <td>-0.30</td>
+                  <td><i class="fas fa-caret-down"></i> -16.00</td>
+                </tr>
+                <tr>
+                  <td>SIGV.N0000</td>
+                  <td>0.90</td>
+                  <td>-0.10</td>
+                  <td><i class="fas fa-caret-down"></i> -45.00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-4">
+            <table class="table table-striped p-1">
+              <thead>
+                <tr class="top-stock">
+                  <th colspan="3">MOST ACTIVE TRADERS</th>
+                </tr>
+                <tr>
+                  <th>Stocks</th>
+                  <th>Trade</th>
+                  <th>Volume</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>AEL.N0000</td>
+                  <td>449</td>
+                  <td>2,048,177</td>
+                </tr>
+                <tr>
+                  <td>BIL.N0000</td>
+                  <td>305</td>
+                  <td>13,490,918</td>
+                </tr>
+                <tr>
+                  <td>MGT.N0000</td>
+                  <td>256</td>
+                  <td>1,113,203</td>
+                </tr>
+                <tr>
+                  <td>CFVF</td>
+                  <td>234</td>
+                  <td>438,843</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div id="footer">
+        <div class="footer-one">
+          <div class="row">
+            <div class="col-md-4 pt-2">
+              <h4 class="well p-1">About Us</h4>
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link active" href="#">Company Overview</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Inverstors</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Corporate Store</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#">Careers</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-4 pt-2">
+              <h4 class="well p-1">Our Markets</h4>
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link active" href="#">Main Markets</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Trading Services</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Membership</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#">Rules and Regulation</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-4 pt-2">
+              <h4 class="well p-1">Follow Us</h4>
+              <div class="social-links pt-3">
+                <a href="#"><i class="fab fa-facebook-square"></i></a>
+                <a href="#"><i class="fab fa-twitter-square"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-pinterest-square"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-two text-center">
+          <p>&copy; Copyright 2019. Shovon Stock Exchange, Inc.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- external  -->
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

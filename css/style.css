@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+.container-fluid {
+  width: 100%;
+  background-image: linear-gradient(to right, #162836, #1f394a, #181F25, #657076);
+
+}
+
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #000;
+}
+
+#clock {
+  margin-right: 40px;
+  padding: 30px;
+  color: #fff;
+  font-weight: bold;
+}
+
+
+
+#register {
+
+  padding: 30px;
+  background-color: #000;
+}
+
+.sign-up {
+
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #CCCCCC;
+}
+
+.sign-in {
+  text-decoration: none !important;
+  background-color: #fff;
+  padding: 10px 40px;
+  color: #000;
+}
+
+.logo {
+  padding: 5px !important;
+  text-decoration: none !important;
+  color: #fff;
+  font-weight: bold;
+}
+
+.logo img {
+  padding: 5px;
+}
+
+.container.nav {
+  background-color: #f5f5f5;
+}
+
+.container.nav nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.container.nav nav a {
+  text-decoration: none;
+  padding-left: 5px;
+  margin-left: 50px;
+  color: #000;
+  font-weight: bold;
+}
+
+.container.nav nav a:hover {
+  background-color: #FBFBFB;
+}
+
+.container.middle {
+  background-color: #fff;
+
+}
+
+.container.slider {
+  width: 100%;
+  background-color: #fff;
+}
+
+.top-stock {
+  text-align: center !important;
+  padding: 20px !important;
+  background-color: #3C4B57;
+  color: #fff;
+}
+
+.container.tables {
+  background-color: #fff;
+}
+
+table,
+tr,
+tr {
+  border: 1px solid #E5E5E5;
+}
+
+.top-gainer-table tr td:last-child {
+  color: #9EDFA3;
+}
+
+.top-losers-table tr td:last-child {
+  color: red;
+}
+
+.footer-one {
+  width: 100%;
+  height: 250px;
+  background-color: #221F1F;
+}
+
+.footer-two {
+  width: 100%;
+  height: 100px;
+  background-color: #1A424C;
+}
+
+.footer-two p {
+  padding-top: 25px;
+  font-size: 20px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.social-links a {
+  color: #fff;
+  font-size: 30px;
+  padding: 5px;
+}
+
+#footer {
+  padding-top: 30px;
+}
+
+#footer h4 {
+  color: #fff;
+}
+
+#footer ul li a {
+  color: #fff;
+}
